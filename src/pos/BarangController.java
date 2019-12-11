@@ -17,8 +17,6 @@ import java.sql.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.fxml.Initializable;
-
 public class BarangController implements Initializable {
     @FXML private TextField textIDBarang;
     @FXML private TextField textNamaBarang;

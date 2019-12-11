@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.MainController">
+    <top>
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu text="Barang">
+                    <MenuItem text="Manajemen..." />
+                </Menu>
+                <Menu text="Penjualan">
+                    <MenuItem text="Cetak Penjualan" />
+                    <MenuItem text="Simpan Penjualan" />
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <AnchorPane>
+            <Label fx:id="lbTotal" alignment="CENTER_RIGHT" layoutX="0" layoutY="0" prefHeight="84.0" prefWidth="800.0" text="0" textAlignment="JUSTIFY">
+            <font>
+               <Font size="48.0" />
+            </font></Label>
+            <TableView fx:id="tableTrx" layoutX="0" layoutY="84.0" prefHeight="400.0" prefWidth="800.0" editable="true">
+                <columns>
+                    <TableColumn fx:id="colID" prefWidth="100" text="ID" onEditCommit="#handleTransaksi"/>
+                    <TableColumn fx:id="colNama" editable="false" prefWidth="300" text="Nama" />
+                    <TableColumn fx:id="colHarga" editable="false" prefWidth="150" text="Harga" />
+                    <TableColumn fx:id="colJumlah" prefWidth="100" text="Jumlah" />
+                    <TableColumn fx:id="colSubTotal" prefWidth="150" text="Subtotal" />
+                </columns>
+            </TableView>
+        </AnchorPane>
+   </center>
+</BorderPane>
