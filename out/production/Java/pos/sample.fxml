@@ -1,8 +1,50 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="pos.BarangController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" prefHeight="300.0" prefWidth="500.0" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.BarangController">
+    <padding>
+        <Insets bottom="25" left="15" right="15" top="25" />
+    </padding>
+    <!-- TextInput-->
+    <Label text="ID Barang :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextField fx:id="textIDBarang" disable="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Label text="Nama Barang :" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+    <TextField fx:id="textNamaBarang" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Label text="Harga Barang :" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+    <TextField fx:id="textHargaBarang" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <!-- Button -->
+    <Button fx:id="btnTambahBarang" onAction="#tambahBarang" prefHeight="25.0" prefWidth="150.0" text="Tambah Barang" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <Button fx:id="btnUbahBarang" onAction="#ubahBarang" prefHeight="25.0" prefWidth="150.0" text="Ubah Barang" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+    <Button fx:id="btnHapusBarang" onAction="#hapusBarang" prefHeight="25.0" prefWidth="150.0" text="Hapus Barang" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+
+    <TableView fx:id="tbBarang" onKeyReleased="#getTableRow" onMouseClicked="#getTableRow" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.rowSpan="10">
+        <columns>
+            <TableColumn fx:id="tbBarangID" prefWidth="35" text="ID" />
+            <TableColumn fx:id="tbBarangNama" prefWidth="185" text="Nama" />
+            <TableColumn fx:id="tbBarangHarga" prefWidth="100" text="Harga" />
+        </columns>
+    </TableView>
+    <Label text="Cari Data" GridPane.columnIndex="1" GridPane.rowIndex="10"></Label>
+    <TextField fx:id="textCariBarang" onKeyTyped="#cariBarang" GridPane.columnIndex="1" GridPane.rowIndex="11"></TextField>
+
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>
