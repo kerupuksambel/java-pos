@@ -18,6 +18,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.annotation.Resources;
+import javax.swing.*;
+import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -203,6 +205,28 @@ public class MainController implements Initializable{
             }
         }
         outFile.close();
+    }
+
+    @FXML
+    private void printTrx(){
+        JTextPane textPane = new JTextPane();
+        String printed = "Nama\t\tHarga\t\tJumlah\tSubtotal\n";
+        for (int i = 0; i<tableTrx.getItems().size(); i++){
+            if(((Transaksi)tableTrx.getItems().get(i)).getId() != ""){
+                printed = printed + (((Transaksi)tableTrx.getItems().get(i)).getNama()) + "\t\t";
+                printed = printed + Integer.toString(((Transaksi)tableTrx.getItems().get(i)).getHarga()) + "\t\t";
+                printed = printed + (((Transaksi)tableTrx.getItems().get(i)).getJumlah()) + "\t";
+                printed = printed + Integer.toString(((Transaksi)tableTrx.getItems().get(i)).getSubtotal());
+                printed = printed + "\n";
+            }
+        }
+        textPane.setText(printed);
+        try{
+            textPane.print();
+        }catch(PrinterException e){
+            e.printStackTrace();
+        }
+
     }
 
     private void refreshTotal(){
