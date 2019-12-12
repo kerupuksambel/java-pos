@@ -9,10 +9,11 @@
         <MenuBar fx:id="menuBar">
             <menus>
                 <Menu text="Barang">
-                    <MenuItem text="Manajemen..." />
+                    <MenuItem text="Manajemen..." onAction="#displayBarang"/>
                 </Menu>
                 <Menu text="Penjualan">
-                    <MenuItem text="Cetak Penjualan" />
+                    <MenuItem text="Checkout..." onAction="#displayCheckOut"/>
+                    <MenuItem text="Cetak Penjualan" onAction="#saveTrx" />
                     <MenuItem text="Simpan Penjualan" />
                 </Menu>
             </menus>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="gridContainer" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.CheckoutController">
+    <padding>
+        <Insets bottom="20" left="30" right="30" top="20" />
+    </padding>
+    <Label text="Harga" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <TextField fx:id="lbTotal" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+
+    <Label text="Uang" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <TextField fx:id="textDibayar" onKeyReleased="#calculateKembalian" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+
+    <Label text="Kembalian" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Label fx:id="lbKembalian" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+
+    <Button fx:id="btnDone" onAction="#closeDialog" disable="true" prefHeight="25.0" prefWidth="56.0" text="Selesai" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" />
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

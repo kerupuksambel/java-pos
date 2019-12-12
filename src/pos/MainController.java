@@ -1,9 +1,12 @@
 package pos;
 
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import library.Transaksi;
 
 import javafx.event.ActionEvent;
@@ -15,6 +18,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.annotation.Resources;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,6 +62,36 @@ public class MainController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resource){
         setTable();
+    }
+
+    @FXML
+    private void displayBarang(){
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("barang.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Manajemen Barang");
+            stage.setScene(new Scene(root, 600, 450));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void displayCheckOut(){
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("checkout.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Checkout");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setTable(){
@@ -124,6 +161,48 @@ public class MainController implements Initializable{
         trxNew.setSubtotal(trxHarga * trxJumlah);
         trxData.set(trxIndex, trxNew);
         refreshTotal();
+    }
+
+    public String getTotal(){
+        return lbTotal.getText();
+    }
+
+    @FXML
+    private void saveTrx(){
+        FileChooser chooser = new FileChooser();
+        chooser.setInitialFileName("report.csv");
+        chooser.setTitle("Choose location To Save Report");
+        File selectedFile = null;
+        while(selectedFile == null){
+            selectedFile = chooser.showSaveDialog(null);
+        }
+
+        File file = selectedFile;
+        PrintWriter outFile = null;
+        try {
+            outFile = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        outFile.println("ID,Nama,Harga,Jumlah,Subtotal");
+
+        for(int i = 0; i<tableTrx.getItems().size(); i++){
+            if(((Transaksi)tableTrx.getItems().get(i)).getId() != ""){
+                outFile.print(((Transaksi)tableTrx.getItems().get(i)).getId());
+                outFile.print(",");
+                outFile.print(((Transaksi)tableTrx.getItems().get(i)).getNama());
+                outFile.print(",");
+                outFile.print(((Transaksi)tableTrx.getItems().get(i)).getHarga());
+                outFile.print(",");
+                outFile.print(((Transaksi)tableTrx.getItems().get(i)).getJumlah());
+                outFile.print(",");
+                outFile.print(((Transaksi)tableTrx.getItems().get(i)).getSubtotal());
+                outFile.println("");
+            }
+        }
+        outFile.close();
     }
 
     private void refreshTotal(){
