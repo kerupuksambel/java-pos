@@ -13,8 +13,7 @@
                 </Menu>
                 <Menu text="Penjualan">
                     <MenuItem text="Checkout..." onAction="#displayCheckOut"/>
-                    <MenuItem text="Cetak Penjualan" onAction="#saveTrx" />
-                    <MenuItem text="Simpan Penjualan" />
+                    <MenuItem text="Simpan Penjualan" onAction="#saveTrx" />
                 </Menu>
             </menus>
         </MenuBar>
